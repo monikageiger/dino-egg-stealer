@@ -4,7 +4,7 @@ window.onload = () => {
     let frameId = null;
 
     const background = new Background(ctx);
-    const car = new Car(ctx, 0, 0)
+    const car = new Car(ctx, canvas.width / 2 - 80, canvas.height / 2 - 50)
 
     function gameLoop() {
         frameId = requestAnimationFrame(gameLoop);
