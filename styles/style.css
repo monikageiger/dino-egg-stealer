@@ -1,0 +1,24 @@
+#welcome-page {
+    display: none;
+    /* display: flex; */
+    align-items: center;
+    flex-direction: column;
+    width: 500px;
+    text-align: center;
+}
+
+#jp-logo {
+    width: 450px;
+
+}
+
+#arrows {
+    width: 100px;
+}
+
+#game-board {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px;
+}
