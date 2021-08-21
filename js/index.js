@@ -3,22 +3,46 @@ window.onload = () => {
     const ctx = canvas.getContext('2d');
     let frameId = null;
 
+
+
     const background = new Background(ctx);
     const car = new Car(ctx, canvas.width / 2 - 80, canvas.height / 2 - 50)
-    let eggsArray = []
+    let eggsArray = [];
+    const totalEggs = 3;
+    const score = {
+        points: 0,
+        draw: function () {
+            ctx.font = '30px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText('Score: ' + this.points, 200, 50);
+        }
+    };
 
     let eggId = null
-
     eggId = setInterval(function () {
-        let egg = new Egg(
-            ctx,
-            Math.floor(Math.random() * (canvas.width - 80)),
-            Math.floor(Math.random() * (canvas.height - 60))
-        )
-        eggsArray.push(egg)
-    }, 2000)
+        if (eggsArray.length < totalEggs) {
+            let egg = new Egg(
+                ctx,
+                Math.floor(Math.random() * (canvas.width - 80)),
+                Math.floor(Math.random() * (canvas.height - 60))
+            )
 
+            eggsArray.push(egg)
+        }
+    }, 1000)
 
+    function checkCollisions(car, egg) {
+        let collide =
+            car.x < egg.centerX && //check the right side of the car
+            car.x + car.width > egg.centerX &&
+            car.y < egg.centerY &&
+            car.y + car.height > egg.centerY;
+        if (collide) {
+            score.points += 1;
+            let collidedEgg = eggsArray.indexOf(egg)
+            eggsArray.splice(collidedEgg, 1)
+        }
+    }
 
 
 
@@ -32,9 +56,11 @@ window.onload = () => {
 
         background.draw();
         car.draw()
+        score.draw()
 
         eggsArray.forEach((eachEgg) => {
             eachEgg.draw()
+            checkCollisions(car, eachEgg)
         })
 
 
