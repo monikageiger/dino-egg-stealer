@@ -2,11 +2,12 @@ window.onload = () => {
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
     let frameId = null;
-
+    const dinoSpeed = 3
 
 
     const background = new Background(ctx);
     const car = new Car(ctx, canvas.width / 2 - 80, canvas.height / 2 - 50)
+    let dino = new Dino(ctx, 0, 0);
     let eggsArray = [];
     const totalEggs = 3;
     const score = {
@@ -44,7 +45,19 @@ window.onload = () => {
         }
     }
 
-
+    function dinoMove() {
+        console.log(car.x, car.y, dino.x, dino.y)
+        if (Math.floor(car.x / dinoSpeed) < Math.floor(dino.x / dinoSpeed)) {
+            dino.x -= dinoSpeed
+        } else if (Math.floor(car.x / dinoSpeed) > Math.floor(dino.x / dinoSpeed)) {
+            dino.x += dinoSpeed
+        }
+        if (Math.floor(car.y / dinoSpeed) < Math.floor(dino.y / dinoSpeed)) {
+            dino.y -= dinoSpeed
+        } else if (Math.floor(car.y / dinoSpeed) > Math.floor(dino.y / dinoSpeed)) {
+            dino.y += dinoSpeed
+        }
+    }
 
 
     function gameLoop() {
@@ -53,10 +66,14 @@ window.onload = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
-
+        car.newPos()
         background.draw();
         car.draw()
         score.draw()
+        // dino.move()
+        dinoMove()
+        dino.draw()
+
 
         eggsArray.forEach((eachEgg) => {
             eachEgg.draw()
@@ -74,21 +91,47 @@ window.onload = () => {
         switch (event.keyCode) {
 
             case 37:
-                if (car.x > 0) car.x -= 1;
+                // left arrow
+                if (car.x > 0) {
+                    car.speedX -= 1
+                } else {
+                    car.x = canvas.width
+                };
                 break;
 
             case 39:
-                if (car.x < canvas.width - car.width) car.x += 1;
+                // right arrow
+                if (car.x < canvas.width - car.width) {
+                    car.speedX += 1
+                } else {
+                    car.x = 0 - car.width
+                };
                 break;
             case 38:
-                if (car.y > 0) car.y -= 1;
+                // up arrow
+                if (car.y > 0) {
+                    car.speedY -= 1
+                } else {
+                    car.y = canvas.height
+                };
                 break;
             case 40:
-                if (car.y < canvas.height - car.height) car.y += 1;
+                // down arrow
+                if (car.y < canvas.height - car.height) {
+                    car.speedY += 1
+                } else {
+                    car.y = 0 - car.height
+                };
                 break;
 
             default:
                 break;
         }
     }
+    document.addEventListener('keyup', (e) => {
+
+        car.speedX = 0;
+        car.speedY = 0;
+
+    });
 }
