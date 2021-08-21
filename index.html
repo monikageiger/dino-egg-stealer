@@ -24,10 +24,25 @@
     </div>
 
     <div class="container" id="game-board">
-        <canvas id="canvas" width="1500" height="650">
-
+        <!-- <img src="/images/logo.png" alt=""> -->
+        <canvas class="container" id="canvas" width="1500" height="650">
         </canvas>
+        <div class="container" id="win-page">
+            <img id="winner-cup" src="/images/winnerCup.png" alt="">
+            <h1>YOU WON!!</h1>
+            <p class="text-center">Congratulations! You stole the eggs before the T-Rex could catch you!</p>
+            <button class="btn btn-lg btn-dark">Play Again</button>
+        </div>
+        <div class="container" id="lose-page">
+            <img src="/images/loser.gif" alt="">
+            <h1>YOU LOST!</h1>
+            <p>Do you want to try again?</p>
+            <button class="btn btn-lg btn-dark">Play Again</button>
+
+        </div>
     </div>
+
+
 
 
 

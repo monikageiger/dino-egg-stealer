@@ -1,3 +1,7 @@
+body {
+    background-color: #e9edc9;
+}
+
 #welcome-page {
     display: none;
     /* display: flex; */
@@ -17,9 +21,49 @@
 }
 
 
+#game-board {
+    /* display: none; */
+    position: relative;
+
+}
+
+h1 {
+    font-weight: bolder;
+}
+
+.container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    color: white;
+
+}
 
 #canvas {
     width: 100%;
+    border-radius: 60px;
     margin-top: 50px;
+    padding: 0;
 
+}
+
+#win-page {
+    display: none;
+    z-index: 1;
+    margin-top: 50px;
+    width: 500px;
+    background-color: transparent;
+    border-radius: 30px;
+}
+
+#winner-cup {
+    width: 80%;
+}
+
+#lose-page {
+    /* display: none; */
+    z-index: 1
 }
