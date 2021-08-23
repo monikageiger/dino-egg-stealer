@@ -14,17 +14,18 @@
 
 <body>
     <div id="welcome-page" class="container">
-        <img id="jp-logo" src="/images/logo.png" alt="">
-        <h1> Game</h1>
-        <p>In this game, you need to get away from the T-Rex, while you are chasing it's eggs. Good luck. You only have
-            one life. You win if you reach 10 points</p>
-        <img id="arrows" src="/images/arrows.png" alt="">
-        <p>Use the <b> arrow keys</b> to move</p>
-        <button class="btn btn-lg btn-success" id="start">Start</button>
+        <h1>WELCOME TO</h1>
+        <div id="welcome-page-instructions">
+            <p>In this game, you need to get away from the T-Rex, while you are chasing it's eggs. Good luck. You only
+                have
+                one life. You win if you reach <b>TEN</b> points</p>
+            <img id="arrows" src="/images/arrows.png" alt="">
+            <p>Use the <b> arrow keys</b> to move</p>
+            <button class="btn btn-lg btn-success" id="start">Start</button>
+        </div>
     </div>
 
-    <div class="container" id="game-board">
-        <!-- <img src="/images/logo.png" alt=""> -->
+    <div class="container game-container" id="game-board">
         <canvas class="container" id="canvas" width="1500" height="650">
         </canvas>
         <div class="container" id="win-page">
