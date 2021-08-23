@@ -77,12 +77,10 @@ window.onload = () => {
     }
 
     function checkCollisionsDino(car, dino) {
-        console.log(car.x, car.y, dino.x, dino.y)
+
         let collide =
-            dino.x < car.centerX && //check the right side of the car
-            dino.x + dino.width > car.centerX &&
-            dino.y < car.centerY &&
-            dino.y + dino.height > car.centerY;
+            Math.abs(dino.x - car.x) < 10 &&
+            Math.abs(dino.y - car.y) < 10
 
         if (collide) {
             cancelAnimationFrame(frameId)
