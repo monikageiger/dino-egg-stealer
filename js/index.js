@@ -64,16 +64,6 @@ window.onload = () => {
         }
     }, 1000)
 
-    // WIN CONDITION CHECKER FUNCTION
-    function checkWin() {
-        if (score.points >= winScore) {
-            gamePage.style.display = 'none'
-            winnerPage.style.display = 'flex'
-            cancelAnimationFrame(frameId)
-            gameSound.stop()
-            winSound.play()
-        }
-    }
 
     // CHECK COLLISION BETWEEN CAR AND EGGS
     function checkCollisionsEgg(car, egg) {
@@ -102,6 +92,17 @@ window.onload = () => {
         }
     }
 
+
+    // WIN CONDITION CHECKER FUNCTION
+    function checkWin() {
+        if (score.points >= winScore) {
+            gamePage.style.display = 'none'
+            winnerPage.style.display = 'flex'
+            cancelAnimationFrame(frameId)
+            gameSound.stop()
+            winSound.play()
+        }
+    }
 
     // LOSING FUNCTION
     function playerLost() {
