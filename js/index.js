@@ -47,6 +47,7 @@ window.onload = () => {
     };
 
 
+
     // CREATING RANDOM EGGS
     setInterval(function () {
         if (eggsArray.length < totalEggs) {
