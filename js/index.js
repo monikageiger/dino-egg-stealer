@@ -1,30 +1,41 @@
-// BUTTONS
-// const allBtns = document.getElementsByTagName('button')
-const welcomeBtn = document.getElementById('welcome-page-button')
-const winnerBtn = document.getElementById('winner-page-button')
-const loserBtn = document.getElementById('loser-page-button')
-// PAGE DISPLAYS
-const welcomePage = document.getElementById('welcome-page')
-const winnerPage = document.getElementById('win-page')
-const loserPage = document.getElementById('lose-page')
-const gamePage = document.getElementById('game-board')
-
-
-
-
-
 window.onload = () => {
+
+    // BUTTONS
+    // const allBtns = document.getElementsByTagName('button')
+    const welcomeBtn = document.getElementById('welcome-page-button')
+    const winnerBtn = document.getElementById('winner-page-button')
+    const loserBtn = document.getElementById('loser-page-button')
+    // PAGE DISPLAYS
+    const welcomePage = document.getElementById('welcome-page')
+    const winnerPage = document.getElementById('win-page')
+    const loserPage = document.getElementById('lose-page')
+    const gamePage = document.getElementById('game-board')
+
+
+    // EVENT LISTENERS
+    document.addEventListener('keydown', moveCar);
+    document.addEventListener('keyup', stopCar)
+    welcomeBtn.addEventListener('click', startGameFromStartPage);
+    loserBtn.addEventListener('click', startGameFromLosePage);
+    winnerBtn.addEventListener('click', startGameFromWinPage);
+
+
+    // CREATING CANVAS
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
+
+
+    // VARIABLES AND ARRAYS
     let frameId = null;
     const dinoSpeed = 3
-
-
-    const background = new Background(ctx);
-    const car = new Car(ctx, canvas.width / 2 - 80, canvas.height / 2 - 50)
-    let dino = new Dino(ctx, 0, 0);
     let eggsArray = [];
     const totalEggs = 3;
+
+
+    // CREATING OBJECTS
+    const background = new Background(ctx);
+    const car = new Car(ctx, canvas.width / 2 - 80, canvas.height / 2 - 50)
+    const dino = new Dino(ctx, 0, 0);
     const score = {
         points: 0,
         draw: function () {
@@ -34,8 +45,9 @@ window.onload = () => {
         }
     };
 
-    let eggId = null
-    eggId = setInterval(function () {
+
+    // CREATING RANDOM EGGS
+    setInterval(function () {
         if (eggsArray.length < totalEggs) {
             let egg = new Egg(
                 ctx,
@@ -46,6 +58,8 @@ window.onload = () => {
         }
     }, 1000)
 
+
+    // CHECK COLLISION BETWEEN CAR AND EGGS
     function checkCollisionsEgg(car, egg) {
         let collide =
             car.x < egg.centerX && //check the right side of the car
@@ -60,6 +74,72 @@ window.onload = () => {
     }
 
 
+    // COLLISION BETWEEN CAR AND DINO
+    function checkCollisionsDino(car, dino) {
+        let collide =
+            Math.abs(dino.x - car.x) < 10 &&
+            Math.abs(dino.y - car.y) < 10
+
+        if (collide) {
+            cancelAnimationFrame(frameId)
+            playerLost()
+        }
+    }
+
+
+    // LOSING FUNCTION
+    function playerLost() {
+        gamePage.style.display = 'none'
+        loserPage.style.display = 'flex'
+    }
+
+
+    // GAME STARTING FUNCTION
+    function gameLoop() {
+        frameId = requestAnimationFrame(gameLoop);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        car.newPos()
+        background.draw();
+        car.draw()
+        score.draw()
+        // dino.move()
+        dinoMove()
+        dino.draw()
+
+        eggsArray.forEach((eachEgg) => {
+            eachEgg.draw()
+            checkCollisionsEgg(car, eachEgg)
+        })
+        checkCollisionsDino(car, dino)
+
+    }
+
+
+    // BUTTON FUNCTIONS FOR PLAYING AGAIN
+    function startGameFromStartPage() {
+        welcomePage.classList.add('hide')
+        welcomePage.classList.remove('container1')
+        gamePage.style.display = 'flex'
+        gameLoop();
+    };
+
+    function startGameFromLosePage() {
+        window.location.reload();
+        // gamePage.style.display = 'flex'
+        // loserPage.style.display = 'none'
+        // gameLoop();
+    };
+
+    function startGameFromWinPage() {
+        window.location.reload();
+        // gamePage.style.display = 'flex'
+        // loserPage.style.display = 'none'
+        // gameLoop();
+    };
+
+
+    // DINO MOVING FUNCTION
     function dinoMove() {
         // console.log(car.x, car.y, dino.x, dino.y)
         if (Math.floor(car.x / dinoSpeed) < Math.floor(dino.x / dinoSpeed)) {
@@ -74,65 +154,7 @@ window.onload = () => {
         }
     }
 
-    function checkCollisionsDino(car, dino) {
-
-        let collide =
-            Math.abs(dino.x - car.x) < 10 &&
-            Math.abs(dino.y - car.y) < 10
-
-        if (collide) {
-            cancelAnimationFrame(frameId)
-            playerLost()
-        }
-    }
-
-    function playerLost() {
-        gamePage.style.display = 'none'
-        loserPage.style.display = 'flex'
-    }
-
-
-    function gameLoop() {
-        frameId = requestAnimationFrame(gameLoop);
-
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-        car.newPos()
-        background.draw();
-        car.draw()
-        score.draw()
-        // dino.move()
-        dinoMove()
-        dino.draw()
-
-
-        eggsArray.forEach((eachEgg) => {
-            eachEgg.draw()
-            checkCollisionsEgg(car, eachEgg)
-        })
-        checkCollisionsDino(car, dino)
-
-
-
-    }
-    // gameLoop()
-    welcomeBtn.onclick = () => {
-        welcomePage.classList.add('hide')
-        welcomePage.classList.remove('container1')
-        gamePage.style.display = 'flex'
-        gameLoop();
-    };
-    loserBtn.onclick = () => {
-        window.location.reload();
-        gamePage.style.display = 'flex'
-        loserPage.style.display = 'none'
-        gameLoop();
-    };
-
-
-    window.addEventListener('keydown', moveCar);
-
+    // ARROWS MOVING CAR
     function moveCar(event) {
         console.log(event.keyCode)
         switch (event.keyCode) {
@@ -175,10 +197,11 @@ window.onload = () => {
                 break;
         }
     }
-    document.addEventListener('keyup', (e) => {
 
+
+    // IF KEYUP MAKE CAR SPEED EQUAL TO 0
+    function stopCar(e) {
         car.speedX = 0;
         car.speedY = 0;
-
-    });
+    };
 }
