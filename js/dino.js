@@ -8,6 +8,8 @@ class Dino {
         this.y = positionY;
         this.width = 150;
         this.height = 150;
+        this.centerX = this.x + this.width / 2;
+        this.centerY = this.y + this.height / 2
 
     }
     draw() {

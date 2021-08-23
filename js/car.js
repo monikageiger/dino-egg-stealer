@@ -11,7 +11,9 @@ class Car {
             this.width = 143,
             this.height = 68,
             this.speedX = 0,
-            this.speedY = 0
+            this.speedY = 0,
+            this.centerX = this.x + this.width / 2,
+            this.centerY = this.y + this.height / 2
     }
 
     draw() {

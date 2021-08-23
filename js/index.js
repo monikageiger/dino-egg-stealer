@@ -1,3 +1,20 @@
+// BUTTONS
+// const allBtns = document.getElementsByTagName('button')
+const welcomeBtn = document.getElementById('welcome-page-button')
+const winnerBtn = document.getElementById('winner-page-button')
+const loserBtn = document.getElementById('loser-page-button')
+// PAGE DISPLAYS
+const welcomePage = document.getElementById('welcome-page')
+const winnerPage = document.getElementById('win-page')
+const loserPage = document.getElementById('win-page')
+const gamePage = document.getElementById('game-board')
+
+
+
+
+
+// welcomeBtn.addEventListener("click", startGame)
+
 window.onload = () => {
     const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
@@ -27,12 +44,11 @@ window.onload = () => {
                 Math.floor(Math.random() * (canvas.width - 80)),
                 Math.floor(Math.random() * (canvas.height - 60))
             )
-
             eggsArray.push(egg)
         }
     }, 1000)
 
-    function checkCollisions(car, egg) {
+    function checkCollisionsEgg(car, egg) {
         let collide =
             car.x < egg.centerX && //check the right side of the car
             car.x + car.width > egg.centerX &&
@@ -45,8 +61,9 @@ window.onload = () => {
         }
     }
 
+
     function dinoMove() {
-        console.log(car.x, car.y, dino.x, dino.y)
+        // console.log(car.x, car.y, dino.x, dino.y)
         if (Math.floor(car.x / dinoSpeed) < Math.floor(dino.x / dinoSpeed)) {
             dino.x -= dinoSpeed
         } else if (Math.floor(car.x / dinoSpeed) > Math.floor(dino.x / dinoSpeed)) {
@@ -56,6 +73,20 @@ window.onload = () => {
             dino.y -= dinoSpeed
         } else if (Math.floor(car.y / dinoSpeed) > Math.floor(dino.y / dinoSpeed)) {
             dino.y += dinoSpeed
+        }
+    }
+
+    function checkCollisionsDino(car, dino) {
+        console.log(car.x, car.y, dino.x, dino.y)
+        let collide =
+            dino.x < car.centerX && //check the right side of the car
+            dino.x + dino.width > car.centerX &&
+            dino.y < car.centerY &&
+            dino.y + dino.height > car.centerY;
+
+        if (collide) {
+            cancelAnimationFrame(frameId)
+            alert('crash')
         }
     }
 
@@ -77,12 +108,20 @@ window.onload = () => {
 
         eggsArray.forEach((eachEgg) => {
             eachEgg.draw()
-            checkCollisions(car, eachEgg)
+            checkCollisionsEgg(car, eachEgg)
         })
+        checkCollisionsDino(car, dino)
+
 
 
     }
-    gameLoop()
+    // gameLoop()
+    welcomeBtn.onclick = () => {
+        welcomePage.classList.add('hide')
+        welcomePage.classList.remove('container1')
+        gamePage.style.display = 'flex'
+        gameLoop();
+    };
 
     window.addEventListener('keydown', moveCar);
 
