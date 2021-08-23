@@ -7,24 +7,21 @@
 body {
     background-color: white;
     background-image: url('/images/bg2.jpg');
-    /* background-repeat: no-repeat; */
     background-size: cover;
     background-position-x: center;
+    background-repeat: no-repeat;
     background-position-y: -45px;
-    z-index: -1;
 }
 
 
 /* WELCOMING PAGE */
 #welcome-page {
-    /* display: none; */
+    display: none;
     font-family: jurassicFont;
     letter-spacing: 1.5px;
     color: white;
     text-shadow: 3px 3px black;
-    /* text-decoration: 1px black; */
     position: relative;
-    /* height: 600px; */
 }
 
 .container {
@@ -63,7 +60,7 @@ p {
     padding-bottom: 10px;
 }
 
-#start {
+#button-display {
     padding: 5px 40px 5px 40px;
     font-size: 3rem;
     letter-spacing: 3px;
@@ -79,38 +76,94 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 600px;
 }
 
 #game-board {
     display: none;
     margin-top: 40px;
     position: relative;
+
 }
 
 #canvas {
     border-radius: 60px;
+    border: 8px solid white;
     margin: 60px;
-
+    padding: 0
 }
 
 
 /* WIN DISPLAY */
 #win-page {
     display: none;
-    z-index: 1;
-    margin-top: 50px;
-    width: 500px;
-    background-color: transparent;
-    border-radius: 30px;
+    font-family: jurassicFont;
+    letter-spacing: 1.5px;
+    color: white;
+    text-shadow: 3px 3px black;
+    position: relative;
 }
 
-#winner-cup {
+.page-text {
+    font-size: 2rem;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    line-height: 25px;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 15px 30px 15px 30px;
+}
+
+#win-page-text h1 {
+    font-size: 9rem;
+    margin-bottom: 110px;
+    text-shadow: 6px 6px black;
+}
+
+
+
+#winner-gif {
     width: 80%;
+    padding-bottom: 10px;
 }
 
 
 /* LOSE DISPLAY */
+
 #lose-page {
     display: none;
-    z-index: 1
+    font-family: jurassicFont;
+    letter-spacing: 1.5px;
+    color: white;
+    text-shadow: 3px 3px black;
+    position: relative;
+}
+
+#win-page-text {
+    font-size: 2rem;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    line-height: 25px;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 15px 30px 15px 30px;
+}
+
+#win-page-text h1 {
+    font-size: 9rem;
+    margin-bottom: 110px;
+    text-shadow: 6px 6px black;
+}
+
+
+
+#loser-gif {
+    width: 100%;
+    padding-bottom: 10px;
 }

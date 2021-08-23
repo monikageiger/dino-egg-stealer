@@ -13,33 +13,44 @@
 </head>
 
 <body>
+    <!-- WELCOME PAGE -->
     <div id="welcome-page" class="container">
         <h1>WELCOME TO</h1>
-        <div id="welcome-page-instructions">
+        <div class="page-text">
             <p>In this game, you need to get away from the T-Rex, while you are chasing it's eggs. Good luck. You only
                 have
                 one life. You win if you reach <b>TEN</b> points</p>
             <img id="arrows" src="/images/arrows.png" alt="">
             <p>Use the <b> arrow keys</b> to move</p>
-            <button class="btn btn-lg btn-success" id="start">Start</button>
+            <button class="btn btn-lg btn-success" id="button-display">Start</button>
         </div>
     </div>
-
+    <!-- GAME BOARD -->
     <div class="container game-container" id="game-board">
         <canvas class="container" id="canvas" width="1500" height="650">
         </canvas>
-        <div class="container" id="win-page">
-            <img id="winner-cup" src="/images/winnerCup.png" alt="">
-            <h1>YOU WON!!</h1>
-            <p class="text-center">Congratulations! You stole the eggs before the T-Rex could catch you!</p>
-            <button class="btn btn-lg btn-dark">Play Again</button>
-        </div>
-        <div class="container" id="lose-page">
-            <img src="/images/loser.gif" alt="">
-            <h1>YOU LOST!</h1>
-            <p>Do you want to try again?</p>
-            <button class="btn btn-lg btn-dark">Play Again</button>
+    </div>
 
+    <!-- WINNER PAGE -->
+    <div id="win-page" class="container">
+        <h1>YOU WON</h1>
+        <div class="page-text">
+            <img id="winner-gif" src="/images/wingif.gif" alt="">
+            <p>Congratulations! You stole the eggs before the T-Rex could catch you!</p>
+            <p>Use the <b> arrow keys</b> to move</p>
+            <button id="button-display" class="btn btn-lg btn-dar">Play Again</button>
+        </div>
+    </div>
+
+
+    <!-- LOSER PAGE -->
+    <div id="lose-page" class="container">
+        <h1>YOU LOST</h1>
+        <div class="page-text">
+            <img id="loser-gif" src="/images/loser.gif" alt="">
+            <p>The T-Rex ate you!</p>
+            <p>Do you want to try again?</p>
+            <button id="button-display" class="btn btn-lg btn-dark">Play Again</button>
         </div>
     </div>
 
@@ -47,9 +58,7 @@
 
 
 
-    <!-- <div class="container">
-        <img src="/images/grass.jpeg" alt="">
-    </div> -->
+
 
     <script src="/js/car.js"></script>
     <script src="/js/background.js"></script>
