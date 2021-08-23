@@ -30,8 +30,13 @@ window.onload = () => {
     const dinoSpeed = 3
     let eggsArray = [];
     const totalEggs = 3;
-    const winScore = 10
-
+    const winScore = 1
+    var menuSound = new sound('/sounds/jurassic.mp3')
+    var gameSound = new sound('/sounds/during-game.mp3')
+    menuSound.play()
+    var roarSound = new sound('/sounds/roar.mp3')
+    var winSound = new sound('/sounds/win.mp3')
+    // let mySound;
 
     // CREATING OBJECTS
     const background = new Background(ctx);
@@ -45,7 +50,6 @@ window.onload = () => {
             ctx.fillText('Score: ' + this.points, 200, 50);
         }
     };
-
 
 
     // CREATING RANDOM EGGS
@@ -66,6 +70,8 @@ window.onload = () => {
             gamePage.style.display = 'none'
             winnerPage.style.display = 'flex'
             cancelAnimationFrame(frameId)
+            gameSound.stop()
+            winSound.play()
         }
     }
 
@@ -101,11 +107,15 @@ window.onload = () => {
     function playerLost() {
         gamePage.style.display = 'none'
         loserPage.style.display = 'flex'
+        menuSound.stop()
+        gameSound.stop()
+        roarSound.play()
     }
 
 
     // GAME STARTING FUNCTION
     function gameLoop() {
+
         frameId = requestAnimationFrame(gameLoop);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -125,6 +135,8 @@ window.onload = () => {
 
         checkWin()
 
+
+
     }
 
 
@@ -133,11 +145,14 @@ window.onload = () => {
         welcomePage.classList.add('hide')
         welcomePage.classList.remove('container1')
         gamePage.style.display = 'flex'
+        winSound.stop()
+        gameSound.play()
         gameLoop();
     };
 
     function startGameFromLosePage() {
         window.location.reload();
+        winSound.stop()
         // gamePage.style.display = 'flex'
         // loserPage.style.display = 'none'
         // gameLoop();
@@ -145,6 +160,7 @@ window.onload = () => {
 
     function startGameFromWinPage() {
         window.location.reload();
+        winSound.stop()
         // gamePage.style.display = 'flex'
         // loserPage.style.display = 'none'
         // gameLoop();
