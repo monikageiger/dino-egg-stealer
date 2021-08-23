@@ -6,14 +6,12 @@ const loserBtn = document.getElementById('loser-page-button')
 // PAGE DISPLAYS
 const welcomePage = document.getElementById('welcome-page')
 const winnerPage = document.getElementById('win-page')
-const loserPage = document.getElementById('win-page')
+const loserPage = document.getElementById('lose-page')
 const gamePage = document.getElementById('game-board')
 
 
 
 
-
-// welcomeBtn.addEventListener("click", startGame)
 
 window.onload = () => {
     const canvas = document.querySelector('canvas');
@@ -84,8 +82,13 @@ window.onload = () => {
 
         if (collide) {
             cancelAnimationFrame(frameId)
-            alert('crash')
+            playerLost()
         }
+    }
+
+    function playerLost() {
+        gamePage.style.display = 'none'
+        loserPage.style.display = 'flex'
     }
 
 
@@ -120,6 +123,13 @@ window.onload = () => {
         gamePage.style.display = 'flex'
         gameLoop();
     };
+    loserBtn.onclick = () => {
+        window.location.reload();
+        gamePage.style.display = 'flex'
+        loserPage.style.display = 'none'
+        gameLoop();
+    };
+
 
     window.addEventListener('keydown', moveCar);
 
