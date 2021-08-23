@@ -30,6 +30,7 @@ window.onload = () => {
     const dinoSpeed = 3
     let eggsArray = [];
     const totalEggs = 3;
+    const winScore = 10
 
 
     // CREATING OBJECTS
@@ -58,6 +59,14 @@ window.onload = () => {
         }
     }, 1000)
 
+    // WIN CONDITION CHECKER FUNCTION
+    function checkWin() {
+        if (score.points >= winScore) {
+            gamePage.style.display = 'none'
+            winnerPage.style.display = 'flex'
+            cancelAnimationFrame(frameId)
+        }
+    }
 
     // CHECK COLLISION BETWEEN CAR AND EGGS
     function checkCollisionsEgg(car, egg) {
@@ -112,6 +121,8 @@ window.onload = () => {
             checkCollisionsEgg(car, eachEgg)
         })
         checkCollisionsDino(car, dino)
+
+        checkWin()
 
     }
 
