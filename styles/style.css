@@ -100,6 +100,14 @@ p {
     padding-bottom: 10px;
 }
 
+#difficulty-div {
+    margin: 5px;
+}
+
+#difficulty {
+    margin-bottom: 8px;
+}
+
 
 /* GAME DISPLAY */
 .game-container {
@@ -135,6 +143,7 @@ p {
     text-shadow: 3px 3px black;
     position: relative;
 }
+
 
 .page-text {
     font-size: 2rem;
