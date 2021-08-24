@@ -1,3 +1,5 @@
+## Dino Egg Stealer
+
 ## Play me
 
 [Here](https://monikageiger.github.io/dino-game/)
