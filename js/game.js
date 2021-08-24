@@ -26,11 +26,11 @@ class Game {
         this.eggsArray = [];
         this.totalEggs = 3;
         this.winScore = 5;
-        this.menuSound = new sound('../sounds/jurassic.mp3');
-        this.gameSound = new sound('../sounds/during-game.mp3');
+        this.menuSound = new sound('./sounds/jurassic.mp3');
+        this.gameSound = new sound('./sounds/during-game.mp3');
         this.menuSound.play();
-        this.roarSound = new sound('../sounds/roar.mp3');
-        this.winSound = new sound('../sounds/win.mp3');
+        this.roarSound = new sound('./sounds/roar.mp3');
+        this.winSound = new sound('./sounds/win.mp3');
         // let mySound;
 
         // CREATING OBJECTS
