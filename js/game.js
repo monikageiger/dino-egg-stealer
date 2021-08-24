@@ -11,7 +11,6 @@ class Game {
         this.loserPage = document.getElementById('lose-page');
         this.gamePage = document.getElementById('game-board');
         // EVENT LISTENERS
-
         this.welcomeBtn.addEventListener('click', this.startGameFromStartPage.bind(this));
         this.loserBtn.addEventListener('click', this.startGameFromLosePage.bind(this));
         this.winnerBtn.addEventListener('click', this.startGameFromWinPage.bind(this));
@@ -40,7 +39,7 @@ class Game {
         this.score = 0
 
     }
-
+    //  Draw Score on Canvas
     drawScore() {
         this.ctx.font = '30px Arial';
         this.ctx.fillStyle = 'white';
@@ -160,7 +159,5 @@ class Game {
         this.checkCollisionEgg()
 
         this.checkWin()
-
-
     }
 }

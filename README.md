@@ -17,19 +17,19 @@ Dino game is a survival game, where you have to get away from the T-Rex, without
 ## index.js
 
 - window.onload(){}
-- setInterval(){}
-- checkWin(){}
-- checkCollisionsEgg(car,egg){}
-- checkCollisionsDino(car,dino){}
-- playerLost(){}
-- gameLoop(){}
+
+## game.js
+
+- Game(){}
+- drawScore(){}
 - startGameFromStartPage(){}
 - startGameFromLosePage(){}
 - startGameFromWinPage(){}
-- dinoMove(){}
-- moveCar(event){}
-- stopCar(){}
-
+- checkCollisionEgg(){}
+- checkCollisionsDino(){}
+- checkWin(){}
+- playerLost(){}
+- play(){}
 
 ## background.js
 
@@ -39,13 +39,18 @@ Dino game is a survival game, where you have to get away from the T-Rex, without
 ## car.js 
 
 - Car(canvasContext, positionX, positionY){}
+- calculateCenter(){}
+- moveCar(event){}
+- stopCar(e){}
 - draw(){}
 - newPos(){}
 
 ## dino.js
 
 - Dino(canvasContext, positionX, positionY){}
+- headPosition(){}
 - draw(){}
+- move(car){}
 
 ## egg.js
 
@@ -60,20 +65,25 @@ Dino game is a survival game, where you have to get away from the T-Rex, without
 ## Task
 
 
-- index - build DOM
-- index - addEventListener
-- index - build canvas
-- index - create variables
-- index - check collisions
-- index - check winner and loser conditions
-- index - start game loop
+- index - create Game class
+- game - addEventListener
+- game - build canvas
+- game - create variables
+- game - check collisions
+- game - check winner and loser conditions
+- game - start game loop
 - background - build background
 - background - draw
 - car - build car
+- car - calculate center of car
+- car - move car according to direction
+- car - stop car
 - car - draw
 - car - position
 - dino - build dino
+- dino - create dino head position
 - dino - draw
+- dino - move
 - egg - build egg
 - egg - draw
 - sound - build sounds
