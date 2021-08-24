@@ -91,14 +91,24 @@ class Game {
     // CHECK COLLISION BETWEEN CAR AND EGGS
     checkCollisionEgg() {
         const car = this.car;
+        const dino = this.dino;
         this.eggsArray.forEach((egg) => {
-            let collide =
+            let collideWithCar =
                 car.x < egg.centerX && //check the right side of the car
                 car.x + car.width > egg.centerX &&
                 car.y < egg.centerY &&
                 car.y + car.height > egg.centerY;
-            if (collide) {
+            if (collideWithCar) {
                 this.score += 1;
+                let collidedEgg = this.eggsArray.indexOf(egg);
+                this.eggsArray.splice(collidedEgg, 1);
+            }
+            let collideWithDino =
+                dino.x < egg.centerX && //check the right side of the dino
+                dino.x + dino.width > egg.centerX &&
+                dino.y < egg.centerY &&
+                dino.y + dino.height > egg.centerY;
+            if (collideWithDino) {
                 let collidedEgg = this.eggsArray.indexOf(egg);
                 this.eggsArray.splice(collidedEgg, 1);
             }
