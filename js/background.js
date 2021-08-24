@@ -3,10 +3,10 @@ bgImg.src = '/images/grass.jpeg'
 
 class Background {
     constructor(canvasContext) {
-        (this.ctx = canvasContext),
-        (this.x = 0),
-        (this.y = 0),
-        (this.width = 1500),
+        (this.ctx = canvasContext);
+        (this.x = 0);
+        (this.y = 0);
+        (this.width = 1500);
         (this.height = 700);
     }
     draw() {
