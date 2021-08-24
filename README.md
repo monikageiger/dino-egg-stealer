@@ -2,7 +2,7 @@
 
 ## Play me
 
-[Here](https://monikageiger.github.io/dino-game/)
+[Here](https://monikageiger.github.io/dino-egg-stealer/)
 
 ## Description
 Dino game is a survival game, where you have to get away from the T-Rex, without colliding with it, and in the meantime try to collect it's eggs to be able to win. You win if you reach 10 eggs. Be careful! You only have one life. 
