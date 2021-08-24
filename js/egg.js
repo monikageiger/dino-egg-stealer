@@ -1,5 +1,5 @@
 const eggImg = document.createElement('img')
-eggImg.src = './images/egg.png'
+eggImg.src = '../images/egg.png'
 
 class Egg {
     constructor(canvasContext, posX, posY) {
