@@ -18,8 +18,7 @@ class Car {
         document.addEventListener('keyup', this.stopCar.bind(this));
     }
     calculateCenter() {
-        // this.centerX = this.x + this.width / 2;
-        // this.centerY = this.y + this.height / 2;
+
         return [this.x + this.width / 2, this.y + this.height / 2]
 
     }
@@ -79,6 +78,7 @@ class Car {
 
     draw() {
         this.ctx.drawImage(carImg, this.x, this.y, this.width, this.height);
+        // this.ctx.fillRect(this.calculateCenter()[0], this.calculateCenter()[1], 5, 5)
     }
     newPos() {
         this.x += this.speedX;

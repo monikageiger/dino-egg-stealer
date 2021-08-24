@@ -2,7 +2,7 @@ const dinoImg = document.createElement('img');
 dinoImg.src = '/images/trex.png';
 
 class Dino {
-    constructor(canvasContext, positionX, positionY) {
+    constructor(canvasContext, positionX, positionY, speed) {
         this.ctx = canvasContext;
         this.x = positionX;
         this.y = positionY;
@@ -10,24 +10,29 @@ class Dino {
         this.height = 150;
         this.centerX = this.x + this.width / 2;
         this.centerY = this.y + this.height / 2;
-        this.dinoSpeed = 1
+        this.speed = speed;
 
+    }
+    headPosition() {
+
+        return [this.x + this.width / 3 * 2.5, this.y + this.height / 3 * 0.7]
     }
     draw() {
         this.ctx.drawImage(dinoImg, this.x, this.y, this.width, this.height);
+        // this.ctx.fillRect(this.headPosition()[0], this.headPosition()[1], 5, 5)
     }
     // DINO MOVING FUNCTION
     move(car) {
         // console.log(car.x, car.y, dino.x, dino.y)
-        if (Math.floor(car.x / this.dinoSpeed) < Math.floor(this.x / this.dinoSpeed)) {
-            this.x -= this.dinoSpeed
-        } else if (Math.floor(car.x / this.dinoSpeed) > Math.floor(this.x / this.dinoSpeed)) {
-            this.x += this.dinoSpeed
+        if (Math.floor(car.calculateCenter()[0] / this.speed) < Math.floor(this.headPosition()[0] / this.speed)) {
+            this.x -= this.speed
+        } else if (Math.floor(car.calculateCenter()[0] / this.speed) > Math.floor(this.headPosition()[0] / this.speed)) {
+            this.x += this.speed
         }
-        if (Math.floor(car.y / this.dinoSpeed) < Math.floor(this.y / this.dinoSpeed)) {
-            this.y -= this.dinoSpeed
-        } else if (Math.floor(car.y / this.dinoSpeed) > Math.floor(this.y / this.dinoSpeed)) {
-            this.y += this.dinoSpeed
+        if (Math.floor(car.y / this.speed) < Math.floor(this.y / this.speed)) {
+            this.y -= this.speed
+        } else if (Math.floor(car.y / this.speed) > Math.floor(this.y / this.speed)) {
+            this.y += this.speed
         }
     }
 

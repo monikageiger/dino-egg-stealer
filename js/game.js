@@ -22,7 +22,7 @@ class Game {
 
         // VARIABLES AND ARRAYS
         this.frameId = null;
-        this.dinoSpeed = 3;
+        this.dinoSpeed = 1;
         this.eggsArray = [];
         this.totalEggs = 3;
         this.winScore = 5;
@@ -36,7 +36,7 @@ class Game {
         // CREATING OBJECTS
         this.background = new Background(this.ctx);
         this.car = new Car(this.ctx, this.canvas.width, this.canvas.height);
-        this.dino = new Dino(this.ctx, 0, 0);
+        this.dino = new Dino(this.ctx, 0, 0, this.dinoSpeed);
         this.score = 0
 
     }
@@ -89,17 +89,16 @@ class Game {
                 let collidedEgg = this.eggsArray.indexOf(egg);
                 this.eggsArray.splice(collidedEgg, 1);
             }
-            // egg.draw();
         });
     }
 
     // COLLISION BETWEEN CAR AND DINO
     checkCollisionsDino() {
-        // console.log(this.dino.x + this.dino.width, this.car.calculateCenter()[0])
-        console.log(this.dino.y + this.dino.height, this.car.calculateCenter()[1])
+        console.log(this.dino.headPosition()[0], this.car.calculateCenter()[0])
+        console.log(this.dino.headPosition()[1], this.car.calculateCenter()[1])
         let collide =
-            Math.abs(this.dino.x + this.dino.width / 2 - this.car.calculateCenter()[0]) < 10 &&
-            Math.abs(this.dino.y + this.dino.height / 2 - this.car.calculateCenter()[1]) < 10
+            Math.abs(this.dino.headPosition()[0] - this.car.calculateCenter()[0]) < 10 &&
+            Math.abs(this.dino.headPosition()[1] - this.car.calculateCenter()[1]) < 10
 
         if (collide) {
             console.log(collide)
