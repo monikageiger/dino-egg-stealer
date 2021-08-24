@@ -101,11 +101,27 @@ p {
 }
 
 #difficulty-div {
-    margin: 5px;
+    margin: 7px;
+    height: 35px;
+    /* border-radius: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+
 #difficulty {
-    margin-bottom: 8px;
+    padding: 0;
+    text-align: center;
+    border-radius: 6px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bolder;
+    /* font-size: 30px;
+    text-shadow: none;
+    position: static;
+    letter-spacing: 1.5px */
 }
 
 
