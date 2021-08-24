@@ -1,5 +1,7 @@
 class Game {
     constructor() {
+        // this.easyCheckbox = document.getElementById('inlineCheckbox1').value
+
         // BUTTONS
         this.welcomeBtn = document.getElementById('welcome-page-button');
         this.winnerBtn = document.getElementById('winner-page-button');
@@ -17,10 +19,28 @@ class Game {
         this.canvas = document.querySelector('canvas');
         this.ctx = canvas.getContext('2d');
 
+        this.difficulty = {
+            easy: {
+                speed: 1,
+                winScore: 5
+            },
+            medium: {
+                speed: 3,
+                winScore: 10
+            },
+            hard: {
+                speed: 5,
+                winScore: 15
+            },
+            extreme: {
+                speed: 6,
+                winScore: 20
+            },
+        }
+
 
         // VARIABLES AND ARRAYS
         this.frameId = null;
-        this.dinoSpeed = 3;
         this.eggsArray = [];
         this.totalEggs = 3;
         this.winScore = 5;
@@ -34,7 +54,7 @@ class Game {
         // CREATING OBJECTS
         this.background = new Background(this.ctx);
         this.car = new Car(this.ctx, this.canvas.width, this.canvas.height);
-        this.dino = new Dino(this.ctx, 0, 0, this.dinoSpeed);
+        this.dino = new Dino(this.ctx, 0, 0);
         this.score = 0
 
     }
@@ -44,15 +64,24 @@ class Game {
     drawScore() {
         this.ctx.font = '30px Arial';
         this.ctx.fillStyle = 'white';
-        this.ctx.fillText('Stolen eggs: ' + this.score, 1250, 50);
+        this.ctx.fillText('Stolen eggs: ' + this.score + '/' + this.winScore, 1250, 50);
     }
 
-
+    checkDifficulty() {
+        let select = document.getElementById('difficulty');
+        let value = select.options[select.selectedIndex].value;
+        let selectedSpeed = this.difficulty[value].speed
+        let selectedWinScore = this.difficulty[value].winScore
+        console.log(selectedSpeed, selectedWinScore)
+        this.dino.speed = selectedSpeed
+        this.winScore = selectedWinScore
+    }
     // BUTTON FUNCTIONS FOR PLAYING
     startGameFromStartPage() {
         this.welcomePage.classList.add('hide')
         this.welcomePage.classList.remove('container1')
         this.gamePage.style.display = 'flex'
+        this.checkDifficulty()
         this.winSound.stop()
         this.gameSound.play()
         // CREATING RANDOM EGGS

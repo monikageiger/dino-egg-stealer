@@ -2,7 +2,7 @@ const dinoImg = document.createElement('img');
 dinoImg.src = './images/trex.png';
 
 class Dino {
-    constructor(canvasContext, positionX, positionY, speed) {
+    constructor(canvasContext, positionX, positionY) {
         this.ctx = canvasContext;
         this.x = positionX;
         this.y = positionY;
@@ -10,7 +10,7 @@ class Dino {
         this.height = 150;
         this.centerX = this.x + this.width / 2;
         this.centerY = this.y + this.height / 2;
-        this.speed = speed;
+        this.speed = 1;
 
     }
     headPosition() {
