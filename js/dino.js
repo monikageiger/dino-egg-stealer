@@ -1,5 +1,5 @@
 const dinoImg = document.createElement('img');
-dinoImg.src = '../images/trex.png';
+dinoImg.src = './images/trex.png';
 
 class Dino {
     constructor(canvasContext, positionX, positionY, speed) {
