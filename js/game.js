@@ -43,8 +43,8 @@ class Game {
 
     drawScore() {
         this.ctx.font = '30px Arial';
-        this.ctx.fillStyle = 'black';
-        this.ctx.fillText('Score: ' + this.score, 200, 50);
+        this.ctx.fillStyle = 'white';
+        this.ctx.fillText('Stolen eggs: ' + this.score, 1250, 50);
     }
     // BUTTON FUNCTIONS FOR PLAYING AGAIN
     startGameFromStartPage() {
