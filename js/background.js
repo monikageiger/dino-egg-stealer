@@ -1,5 +1,5 @@
 const bgImg = document.createElement('img')
-bgImg.src = '/images/grass.jpeg'
+bgImg.src = './images/grass.jpeg'
 
 class Background {
     constructor(canvasContext) {

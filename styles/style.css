@@ -1,6 +1,6 @@
 @font-face {
     font-family: jurassicFont;
-    src: url('/jurassic-park/Jurassic\ Park.ttf');
+    src: url('./jurassic-park/Jurassic\ Park.ttf');
 }
 
 .hide {
@@ -9,7 +9,7 @@
 
 body {
     background-color: white;
-    background-image: url('/images/bg2.jpg');
+    background-image: url('./images/bg2.jpg');
     background-size: cover;
     background-position-x: center;
     background-repeat: no-repeat;
