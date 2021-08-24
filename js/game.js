@@ -1,7 +1,6 @@
 class Game {
     constructor() {
         // BUTTONS
-        // const allBtns = document.getElementsByTagName('button')
         this.welcomeBtn = document.getElementById('welcome-page-button');
         this.winnerBtn = document.getElementById('winner-page-button');
         this.loserBtn = document.getElementById('loser-page-button');
@@ -21,7 +20,7 @@ class Game {
 
         // VARIABLES AND ARRAYS
         this.frameId = null;
-        this.dinoSpeed = 1;
+        this.dinoSpeed = 3;
         this.eggsArray = [];
         this.totalEggs = 3;
         this.winScore = 5;
@@ -30,7 +29,7 @@ class Game {
         this.menuSound.play();
         this.roarSound = new sound('./sounds/roar.mp3');
         this.winSound = new sound('./sounds/win.mp3');
-        // let mySound;
+
 
         // CREATING OBJECTS
         this.background = new Background(this.ctx);
@@ -39,13 +38,17 @@ class Game {
         this.score = 0
 
     }
+
+
     //  Draw Score on Canvas
     drawScore() {
         this.ctx.font = '30px Arial';
         this.ctx.fillStyle = 'white';
         this.ctx.fillText('Stolen eggs: ' + this.score, 1250, 50);
     }
-    // BUTTON FUNCTIONS FOR PLAYING AGAIN
+
+
+    // BUTTON FUNCTIONS FOR PLAYING
     startGameFromStartPage() {
         this.welcomePage.classList.add('hide')
         this.welcomePage.classList.remove('container1')
@@ -89,7 +92,6 @@ class Game {
     checkCollisionEgg() {
         const car = this.car;
         this.eggsArray.forEach((egg) => {
-            // console.log(egg)
             let collide =
                 car.x < egg.centerX && //check the right side of the car
                 car.x + car.width > egg.centerX &&
@@ -105,14 +107,11 @@ class Game {
 
     // COLLISION BETWEEN CAR AND DINO
     checkCollisionsDino() {
-        console.log(this.dino.headPosition()[0], this.car.calculateCenter()[0])
-        console.log(this.dino.headPosition()[1], this.car.calculateCenter()[1])
         let collide =
             Math.abs(this.dino.headPosition()[0] - this.car.calculateCenter()[0]) < 10 &&
             Math.abs(this.dino.headPosition()[1] - this.car.calculateCenter()[1]) < 10
 
         if (collide) {
-            console.log(collide)
             cancelAnimationFrame(this.frameId)
             this.playerLost()
         }

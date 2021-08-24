@@ -14,16 +14,15 @@ class Dino {
 
     }
     headPosition() {
-
         return [this.x + this.width / 3 * 2.5, this.y + this.height / 3 * 0.7]
     }
     draw() {
         this.ctx.drawImage(dinoImg, this.x, this.y, this.width, this.height);
-        // this.ctx.fillRect(this.headPosition()[0], this.headPosition()[1], 5, 5)
+
     }
     // DINO MOVING FUNCTION
     move(car) {
-        // console.log(car.x, car.y, dino.x, dino.y)
+
         if (Math.floor(car.calculateCenter()[0] / this.speed) < Math.floor(this.headPosition()[0] / this.speed)) {
             this.x -= this.speed
         } else if (Math.floor(car.calculateCenter()[0] / this.speed) > Math.floor(this.headPosition()[0] / this.speed)) {
