@@ -1,11 +1,12 @@
-const carImg = document.createElement('img');
-carImg.src = './images/car.png';
+const carImgLeft = document.createElement('img');
+const carImgRight = document.createElement('img');
+carImgLeft.src = './images/car.png';
+carImgRight.src = './images/car-right.png';
 
 class Car {
 
     constructor(canvasContext, canvasWidth, canvasHeight) {
         this.ctx = canvasContext;
-        this.image = carImg;
         this.x = canvasWidth / 2 - 80;
         this.y = canvasHeight / 2 - 50;
         this.canvasHeight = canvasHeight;
@@ -16,21 +17,19 @@ class Car {
         this.speedY = 0;
         document.addEventListener('keydown', this.moveCar.bind(this));
         document.addEventListener('keyup', this.stopCar.bind(this));
+        this.direction = 'left'
     }
     calculateCenter() {
-
         return [this.x + this.width / 2, this.y + this.height / 2]
-
     }
 
     // ARROWS MOVING CAR
     moveCar(event) {
-        // console.log(event.keyCode)
         switch (event.keyCode) {
 
             case 37:
+                this.direction = 'left'
                 // left arrow
-                // console.log(this.x)
                 if (this.x > 0) {
                     this.speedX -= 1
                 } else {
@@ -40,6 +39,7 @@ class Car {
 
             case 39:
                 // right arrow
+                this.direction = 'right'
                 if (this.x < this.canvasWidth - this.width) {
                     this.speedX += 1
                 } else {
@@ -77,7 +77,11 @@ class Car {
 
 
     draw() {
-        this.ctx.drawImage(carImg, this.x, this.y, this.width, this.height);
+        if (this.direction === "left") {
+            this.ctx.drawImage(carImgLeft, this.x, this.y, this.width, this.height)
+        } else {
+            this.ctx.drawImage(carImgRight, this.x, this.y, this.width, this.height)
+        }
         // this.ctx.fillRect(this.calculateCenter()[0], this.calculateCenter()[1], 5, 5)
     }
     newPos() {
