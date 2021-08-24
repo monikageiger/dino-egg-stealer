@@ -53,6 +53,18 @@ class Game {
         this.gamePage.style.display = 'flex'
         this.winSound.stop()
         this.gameSound.play()
+        // CREATING RANDOM EGGS
+        setInterval(() => {
+            if (this.eggsArray.length < this.totalEggs) {
+                let egg = new Egg(
+                    this.ctx,
+                    Math.floor(Math.random() * (this.canvas.width - 80)),
+                    Math.floor(Math.random() * (this.canvas.height - 60))
+                )
+                this.eggsArray.push(egg);
+                // egg.draw();
+            }
+        }, 1000)
         this.play();
     };
 
@@ -149,18 +161,6 @@ class Game {
 
         this.checkWin()
 
-        // CREATING RANDOM EGGS
-        setInterval(() => {
-            if (this.eggsArray.length < this.totalEggs) {
-                let egg = new Egg(
-                    this.ctx,
-                    Math.floor(Math.random() * (this.canvas.width - 80)),
-                    Math.floor(Math.random() * (this.canvas.height - 60))
-                )
-                this.eggsArray.push(egg);
-                // egg.draw();
-            }
-        }, 1000)
 
     }
 }
