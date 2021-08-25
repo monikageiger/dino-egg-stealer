@@ -25,6 +25,7 @@ class Car {
 
     // ARROWS MOVING CAR
     moveCar(event) {
+        event.preventDefault()
         switch (event.keyCode) {
 
             case 37:
