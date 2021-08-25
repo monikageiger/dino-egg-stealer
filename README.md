@@ -5,7 +5,7 @@
 [Here](https://monikageiger.github.io/dino-egg-stealer/)
 
 ## Description
-Dino game is a survival game, where you have to get away from the T-Rex, without colliding with it, and in the meantime try to collect it's eggs to be able to win. You win if you reach 10 eggs. Be careful! You only have one life. 
+Egg stealer is a survival game, where you have to get away from the T-Rex, without colliding with it, and in the meantime try to collect it's eggs to be able to win. You win if you reach the displayed number of eggs . Be careful! You only have one life. 
 
 
 ## MVP (DOM - CANVAS)
@@ -22,6 +22,7 @@ Dino game is a survival game, where you have to get away from the T-Rex, without
 
 - Game(){}
 - drawScore(){}
+- checkDifficulty(){}
 - startGameFromStartPage(){}
 - startGameFromLosePage(){}
 - startGameFromWinPage(){}
@@ -69,6 +70,7 @@ Dino game is a survival game, where you have to get away from the T-Rex, without
 - game - addEventListener
 - game - build canvas
 - game - create variables
+- game - check the selected difficulty
 - game - check collisions
 - game - check winner and loser conditions
 - game - start game loop
