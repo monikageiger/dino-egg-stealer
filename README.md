@@ -1,4 +1,4 @@
-## Dino Egg Stealer
+## Egg Stealer
 
 ## Play me
 
