@@ -29,6 +29,7 @@ class Dino {
 
     // get the right picture depending on the direction property
     draw() {
+
         if (this.direction === 'right') {
             this.ctx.drawImage(dinoImgRight, this.x, this.y, this.width, this.height)
         } else {
@@ -41,11 +42,28 @@ class Dino {
 
     // DINO MOVING FUNCTION / change the direction property depending on where the car is compared the dino
     move(car) {
+        // console.log(Math.floor(car.calculateCenter()[0] / this.speed), Math.floor(this.headPosition()[0] / this.speed), this.direction)
+        // console.log(this.x, car.x, this.x - car.x)
+
+        // Math.abs(this.dino.headPosition()[0] - this.car.calculateCenter()[0]) < 10 &&
+        //     Math.abs(this.dino.headPosition()[1] - this.car.calculateCenter()[1]) < 10
+        if ((Math.abs(this.x - car.x) <= 50 || Math.abs(this.x - car.x) > -55)) {
+            this.direction = 'left'
+        }
+
 
         if (Math.floor(car.calculateCenter()[0] / this.speed) < Math.floor(this.headPosition()[0] / this.speed)) {
             // dino moves left
             this.x -= this.speed
             this.direction = 'left'
+            // if (Math.abs(this.x - car.x) <= 50 || Math.abs(this.x - car.x) > -55) {
+            //     this.direction = 'left'
+            //     console.log('calling left')
+            // } else {
+            //     this.direction = 'right'
+            //     console.log('calling right', this.x, car.x, this.x - car.x)
+            // }
+
         } else if (Math.floor(car.calculateCenter()[0] / this.speed) > Math.floor(this.headPosition()[0] / this.speed)) {
             // dino moves right
             this.x += this.speed
@@ -54,9 +72,11 @@ class Dino {
         if (Math.floor(car.y / this.speed) < Math.floor(this.y / this.speed)) {
             // dino moves up
             this.y -= this.speed
+            // this.direction = 'left'
         } else if (Math.floor(car.y / this.speed) > Math.floor(this.y / this.speed)) {
             // dino moves down
             this.y += this.speed
+            // this.direction = 'right'
         }
     }
 
