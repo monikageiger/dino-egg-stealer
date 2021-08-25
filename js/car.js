@@ -25,7 +25,6 @@ class Car {
 
     // ARROWS MOVING CAR
     moveCar(event) {
-        event.preventDefault()
         switch (event.keyCode) {
 
             case 37:
@@ -49,6 +48,7 @@ class Car {
                 break;
             case 38:
                 // up arrow
+                event.preventDefault()
                 if (this.y > 0) {
                     this.speedY -= 1
                 } else {
@@ -57,6 +57,7 @@ class Car {
                 break;
             case 40:
                 // down arrow
+                event.preventDefault()
                 if (this.y < this.canvasHeight - this.height) {
                     this.speedY += 1
                 } else {

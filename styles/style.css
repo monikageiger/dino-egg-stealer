@@ -103,7 +103,6 @@ p {
 #difficulty-div {
     margin: 7px;
     height: 35px;
-    /* border-radius: 10px; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -118,16 +117,11 @@ p {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     font-weight: bolder;
-    /* font-size: 30px;
-    text-shadow: none;
-    position: static;
-    letter-spacing: 1.5px */
 }
 
 
 /* GAME DISPLAY */
 .game-container {
-    /* position: absolute; */
     display: flex;
     flex-direction: column;
     align-items: center;
