@@ -82,6 +82,7 @@ class Game {
         this.welcomePage.classList.remove('container1')
         this.gamePage.style.display = 'flex'
         this.checkDifficulty()
+        this.menuSound.stop();
         this.winSound.stop()
         this.gameSound.play()
         // CREATING RANDOM EGGS
